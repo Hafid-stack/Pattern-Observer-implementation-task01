@@ -2,29 +2,30 @@ package org.example.Implementations.observable;
 
 import org.example.obs.Observable;
 import org.example.obs.Observer;
+import org.example.obs.ObserverPull;
 
 import java.util.ArrayList;
 
-public class ObservableImpl implements Observable {
+public class ObservablePullImpl implements Observable {
 
 
-    private ArrayList<Observer> observers = new ArrayList<>();
+    private ArrayList<ObserverPull> observers = new ArrayList<>();
     private int state;
     @Override
-    public void addObserver(Observer observer) {
+    public void addObserver(ObserverPull observer) {
         observers.add(observer);
     }
 
     @Override
-    public void removeObserver(Observer observer) {
+    public void removeObserver(ObserverPull observer) {
         observers.remove(observer);
     }
 
     @Override
     public void notifyObservers() {
 
-        for (Observer observer : observers) {
-            observer.update(state);
+        for (ObserverPull observer : observers) {
+            observer.update(this);
 
         }
 
